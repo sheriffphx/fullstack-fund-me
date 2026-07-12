@@ -1,0 +1,282 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #F1F5F9;
+      --surface:      #FFFFFF;
+      --dark-card:    #0F172A;
+      --counter:      #F59E0B;
+      --counter-glow: rgba(245, 158, 11, 0.25);
+      --accent:       #0D9488;
+      --accent-hover: #0F766E;
+      --text:         #1E293B;
+      --muted:        #64748B;
+      --border:       #E2E8F0;
+      --danger:       #EF4444;
+      --mono:         'JetBrains Mono', monospace;
+      --sans:         'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 64px;
+    }
+
+    /* ── Wordmark ── */
+    .wordmark {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+      align-self: flex-start;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Live counter (dark hero card) ── */
+    .counter-card {
+      background: var(--dark-card);
+      border-color: transparent;
+      text-align: center;
+      padding: 40px 28px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    #eth-counter {
+      font-family: var(--mono);
+      font-size: clamp(36px, 10vw, 56px);
+      font-weight: 700;
+      color: var(--counter);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    #eth-counter.pulse {
+      animation: counter-pulse 0.6s ease-out;
+    }
+
+    @keyframes counter-pulse {
+      0%   { color: #FFFFFF; text-shadow: 0 0 24px var(--counter-glow); }
+      100% { color: var(--counter); text-shadow: none; }
+    }
+
+    .counter-label {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Connect ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    #connect-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    #connect-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    #connect-btn.connected {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(13, 148, 136, 0.06);
+    }
+
+    /* ── Fund form ── */
+    .fund-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    #eth-amount {
+      flex: 1;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    #eth-amount:focus { border-color: var(--accent); }
+    #eth-amount::placeholder { color: var(--muted); }
+
+    #fund-btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    #fund-btn:hover { background: var(--accent-hover); }
+    #fund-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .fund-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* ── Funders ── */
+    .funders-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    #funder-count {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    #funders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .funder-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+
+    .funder-rank {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .funder-addr {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .funder-amount {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .empty {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* ── Admin ── */
+    #admin-section { border-top: 2px solid var(--danger); }
+
+    .admin-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--danger);
+      margin-bottom: 14px;
+    }
+
+    #withdraw-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1.5px solid var(--danger);
+      background: transparent;
+      color: var(--danger);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    #withdraw-btn:hover { background: rgba(239, 68, 68, 0.06); }
+    #withdraw-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .hidden { display: none !important; }

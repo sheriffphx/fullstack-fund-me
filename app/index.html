@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>FundMe</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <p class="wordmark">⬡ FundMe / Sepolia</p>
+
+        <!-- Live counter -->
+        <div class="card counter-card">
+            <div class="live-badge">
+                <span class="live-dot" id="status-dot"></span>
+                Live total raised
+            </div>
+            <div id="eth-counter">—</div>
+            <p class="counter-label">ETH on Sepolia testnet</p>
+        </div>
+
+        <!-- Connect wallet -->
+        <div class="card">
+            <p class="section-label">Wallet</p>
+            <button id="connect-btn">Connect Wallet</button>
+        </div>
+
+        <!-- Fund -->
+        <div class="card">
+            <p class="section-label">Fund this contract</p>
+            <div class="fund-row">
+                <input id="eth-amount" type="number" step="0.001" min="0" placeholder="0.01">
+                <button id="fund-btn">Fund</button>
+            </div>
+            <p class="fund-hint">Minimum $1 USD equivalent in ETH</p>
+        </div>
+
+        <!-- Funders list -->
+        <div class="card">
+            <div class="funders-header">
+                <p class="section-label" style="margin:0">Funders</p>
+                <span id="funder-count"></span>
+            </div>
+            <div id="funders-list">
+                <p class="empty">Connect your wallet to see funders.</p>
+            </div>
+        </div>
+
+        <!-- Admin (hidden until owner connects) -->
+        <div class="card hidden" id="admin-section">
+            <p class="admin-label">Owner only</p>
+            <button id="withdraw-btn">Withdraw All Funds</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+        <script src="./abi.js"></script>
+        <script src="./script.js"></script>
+    </body>
+
+    </html>
